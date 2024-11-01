@@ -9,6 +9,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const breakpoints = {
+  xs: `max-width: 480px`,
+  sm: `max-width: 768px`,
+  md: `max-width: 992px`,
+  lg: `max-width: 1216px`,
+  xl: `max-width: 1408px`,
+} as const;
+
 export const FullBleedWrapper = `
   display: grid;
   grid-template-columns: 1fr min(80ch, 100%) 1fr;
