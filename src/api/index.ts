@@ -8,8 +8,16 @@ export const api = createApi({
   }),
   tagTypes: ['USER', 'DETAILS'],
   endpoints: (builder) => ({
-    getUsers: builder.query<User[], void>({
-      query: () => '/users',
+    getUsers: builder.query<User[], string>({
+      query: (name) => {
+        const params: { [key: string]: string } = {};
+        if (name) params.name = name;
+
+        return {
+          url: '/users',
+          params,
+        };
+      },
       providesTags: ['USER'],
     }),
     getUserDetails: builder.query<User, number>({
