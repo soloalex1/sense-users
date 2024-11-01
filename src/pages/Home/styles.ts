@@ -1,12 +1,20 @@
 import styled from 'styled-components';
-import { Input, Label } from 'react-aria-components';
-import { FullBleed, FullBleedWrapper } from '../../globalStyles';
+import { Input, Label, TextField } from 'react-aria-components';
+import { breakpoints, FullBleed, FullBleedWrapper } from '../../globalStyles';
 
 export const MainContainer = styled.main`
   ${FullBleedWrapper}
+
+  @media(${breakpoints.md}) {
+    > * {
+      padding: 0 16px;
+    }
+  }
 `;
 
 export const Header = styled.header`
+  ${FullBleed}
+
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -17,8 +25,10 @@ export const Header = styled.header`
   padding: 16px;
   font-weight: 700;
   font-style: normal;
+`;
 
-  ${FullBleed}
+export const TextWrapper = styled(TextField)`
+  margin: 8px 0;
 `;
 
 export const SearchLabel = styled(Label)`
