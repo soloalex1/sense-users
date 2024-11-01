@@ -12,8 +12,8 @@ export const api = createApi({
       query: () => '/users',
       providesTags: ['USER'],
     }),
-    getUserDetails: builder.query({
-      query: ({ id }) => ({ url: '/users', params: { id } }),
+    getUserDetails: builder.query<User, number>({
+      query: (id) => ({ url: '/users', params: { id } }),
       providesTags: ['DETAILS'],
     }),
   }),
