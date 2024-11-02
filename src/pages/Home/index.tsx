@@ -1,3 +1,4 @@
+import { Controller } from 'react-hook-form';
 import UsersTable from '../../components/Table';
 
 import useSearch from '../../hooks/useSearch';
@@ -5,7 +6,7 @@ import useSearch from '../../hooks/useSearch';
 import * as S from './styles';
 
 export default function HomePage() {
-  const { data, register, onSubmit, isLoading } = useSearch();
+  const { data, control, onSubmit, isFetching } = useSearch();
 
   return (
     <>
@@ -14,18 +15,26 @@ export default function HomePage() {
       </S.Header>
       <S.MainContainer>
         <S.SearchForm onSubmit={onSubmit}>
-          <S.TextWrapper>
-            <S.SearchLabel htmlFor="search">Pesquisa de usuários</S.SearchLabel>
-            <S.Search
-              type="search"
-              placeholder="Pesquise usuários pelo nome"
-              id="search"
-              {...register('search')}
-            />
-          </S.TextWrapper>
+          <Controller
+            name="search"
+            control={control}
+            render={({ field }) => (
+              <S.TextWrapper>
+                <S.SearchLabel htmlFor="search">
+                  Pesquisa de usuários
+                </S.SearchLabel>
+                <S.Search
+                  type="search"
+                  placeholder="Pesquise usuários pelo nome"
+                  id="search"
+                  {...field}
+                />
+              </S.TextWrapper>
+            )}
+          />
           <S.SearchButton type="submit">Pesquisar</S.SearchButton>
         </S.SearchForm>
-        <UsersTable users={data} isLoading={isLoading} />
+        <UsersTable users={data} isLoading={isFetching} />
       </S.MainContainer>
     </>
   );

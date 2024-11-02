@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useLazyGetUsersQuery } from '../api';
-import { useEffect } from 'react';
 
 type FormValues = {
   search: string;
@@ -9,10 +9,10 @@ type FormValues = {
 
 const useSearch = () => {
   const currentSearch = localStorage.getItem('searchValue') ?? '';
-  const [getUsers, { data, isLoading, isUninitialized }] =
+  const [getUsers, { data, isFetching, isUninitialized }] =
     useLazyGetUsersQuery();
 
-  const { register, handleSubmit } = useForm<FormValues>({
+  const { control, register, handleSubmit } = useForm<FormValues>({
     mode: 'onSubmit',
     defaultValues: {
       search: currentSearch,
@@ -22,6 +22,7 @@ const useSearch = () => {
   const onSubmit: SubmitHandler<FormValues> = async ({ search }, event) => {
     event?.preventDefault();
     localStorage.setItem('searchValue', search);
+
     await getUsers(search);
   };
 
@@ -33,9 +34,10 @@ const useSearch = () => {
 
   return {
     onSubmit: handleSubmit(onSubmit),
+    control,
     register,
     data,
-    isLoading,
+    isFetching,
   };
 };
 
