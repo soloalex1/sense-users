@@ -14,23 +14,24 @@ export default function HomePage() {
   const { data, isLoading, isError } = useGetUsersQuery(debouncedSearch);
 
   return (
-    <S.MainContainer>
+    <>
       <S.Header>
         <h1>Lista de usuários</h1>
       </S.Header>
-
-      <S.TextWrapper>
-        <S.SearchLabel htmlFor="search">Pesquisa de usuários</S.SearchLabel>
-        <S.Search
-          id="search"
-          type="search"
-          name="search"
-          placeholder="Pesquise usuários pelo nome"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </S.TextWrapper>
-      <UsersTable users={data} isLoading={isLoading} />
-    </S.MainContainer>
+      <S.MainContainer>
+        <S.TextWrapper>
+          <S.SearchLabel htmlFor="search">Pesquisa de usuários</S.SearchLabel>
+          <S.Search
+            id="search"
+            type="search"
+            name="search"
+            placeholder="Pesquise usuários pelo nome"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </S.TextWrapper>
+        <UsersTable users={data} isLoading={isLoading} />
+      </S.MainContainer>
+    </>
   );
 }

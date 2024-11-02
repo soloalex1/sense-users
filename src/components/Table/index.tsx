@@ -7,8 +7,11 @@ import {
   TableHeader,
 } from 'react-aria-components';
 
-import { User } from '../../types';
 import Spinner from '../Spinner';
+
+import { User } from '../../types';
+
+import * as S from './styles';
 
 type UsersTableProps = {
   users: User[] | undefined;
@@ -21,22 +24,22 @@ const UsersTable = ({ users, isLoading }: UsersTableProps) => {
   }
 
   return (
-    <Table aria-label="Usuários">
-      <TableHeader>
+    <S.Table aria-label="Usuários">
+      <S.TableHeader>
         <Column isRowHeader>Nome</Column>
         <Column isRowHeader>Telefone</Column>
         <Column isRowHeader>E-mail</Column>
-      </TableHeader>
+      </S.TableHeader>
       <TableBody>
         {users.map((user) => (
           <Row key={user.id}>
-            <Cell>{user.name}</Cell>
-            <Cell>{user.phone}</Cell>
-            <Cell>{user.email}</Cell>
+            <S.TableCell>{user.name}</S.TableCell>
+            <S.TableCell>{user.phone}</S.TableCell>
+            <S.TableCell>{user.email}</S.TableCell>
           </Row>
         ))}
       </TableBody>
-    </Table>
+    </S.Table>
   );
 };
 
