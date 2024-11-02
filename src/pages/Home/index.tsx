@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import { Controller } from 'react-hook-form';
+import { TableCellsIcon, QueueListIcon } from '@heroicons/react/24/outline';
+
 import UsersTable from '../../components/Table';
 
 import useSearch from '../../hooks/useSearch';
@@ -6,6 +9,8 @@ import useSearch from '../../hooks/useSearch';
 import * as S from './styles';
 
 export default function HomePage() {
+  const [view, setView] = useState<string>('table');
+
   const { data, control, onSubmit, isFetching } = useSearch();
 
   return (
@@ -34,7 +39,21 @@ export default function HomePage() {
           />
           <S.SearchButton type="submit">Pesquisar</S.SearchButton>
         </S.SearchForm>
-        <UsersTable users={data} isLoading={isFetching} />
+
+        <S.ToggleGroup
+          value={view}
+          onChange={setView}
+          aria-label="Alterar visualização"
+        >
+          <S.Toggle value="table">
+            <TableCellsIcon title="Tabela" />
+          </S.Toggle>
+          <S.Toggle value="list">
+            <QueueListIcon title="Lista" />
+          </S.Toggle>
+        </S.ToggleGroup>
+
+        {view === 'table' && <UsersTable users={data} isLoading={isFetching} />}
       </S.MainContainer>
     </>
   );

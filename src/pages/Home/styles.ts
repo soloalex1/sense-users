@@ -1,13 +1,18 @@
 import styled from 'styled-components';
-import { Button, Form, Input, Label, TextField } from 'react-aria-components';
+import {
+  Button,
+  Form,
+  Input,
+  Label,
+  Radio,
+  RadioGroup,
+  TextField,
+} from 'react-aria-components';
+
 import { breakpoints, FullBleed, FullBleedWrapper } from '../../globalStyles';
 
 export const MainContainer = styled.main`
-  ${FullBleedWrapper}/* @media(${breakpoints.md}) {
-    > * {
-      padding: 0 16px;
-    }
-  } */
+  ${FullBleedWrapper}
 `;
 
 export const Header = styled.header`
@@ -71,4 +76,34 @@ export const SearchButton = styled(Button)`
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
+`;
+
+export const ToggleGroup = styled(RadioGroup)`
+  width: 100%;
+  margin: 8px 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  gap: 8px;
+`;
+
+export const Toggle = styled(Radio)`
+  padding: 6px;
+  background-color: #fff;
+  border-radius: 0;
+  color: #000;
+  border: 2px solid #000;
+
+  display: flex;
+  align-items: center;
+
+  &[data-selected] {
+    background-color: #000;
+    color: #fff;
+  }
+
+  svg {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 `;
