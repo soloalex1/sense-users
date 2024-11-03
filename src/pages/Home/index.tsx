@@ -3,13 +3,14 @@ import { Controller } from 'react-hook-form';
 import { TableCellsIcon, QueueListIcon } from '@heroicons/react/24/outline';
 
 import UsersTable from '../../components/Table';
+import UserList from '../../components/UserList';
 
 import useSearch from '../../hooks/useSearch';
 
 import * as S from './styles';
 
 export default function HomePage() {
-  const [view, setView] = useState<string>('table');
+  const [view, setView] = useState<string>('list');
 
   const { data, control, onSubmit, isFetching } = useSearch();
 
@@ -54,6 +55,7 @@ export default function HomePage() {
         </S.ToggleGroup>
 
         {view === 'table' && <UsersTable users={data} isLoading={isFetching} />}
+        {view === 'list' && <UserList users={data} />}
       </S.MainContainer>
     </>
   );
