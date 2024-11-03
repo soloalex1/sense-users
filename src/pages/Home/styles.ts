@@ -37,14 +37,14 @@ export const SearchForm = styled(Form)`
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+
+  @media (${breakpoints.sm}) {
+    padding: 8px 16px;
+  }
 `;
 
 export const TextWrapper = styled(TextField)`
   flex-grow: 1;
-
-  @media (${breakpoints.md}) {
-    padding: 0 16px;
-  }
 `;
 
 export const SearchLabel = styled(Label)`
@@ -80,11 +80,16 @@ export const SearchButton = styled(Button)`
 
 export const ToggleGroup = styled(RadioGroup)`
   width: 100%;
-  margin: 8px 0;
+  padding: 8px 0;
+
   display: flex;
   justify-content: flex-end;
   flex-flow: row nowrap;
   gap: 8px;
+
+  @media (${breakpoints.sm}) {
+    padding: 8px 16px;
+  }
 `;
 
 export const Toggle = styled(Radio)`
