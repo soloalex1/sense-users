@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useLazyGetUsersQuery } from '../api';
@@ -8,7 +9,9 @@ type FormValues = {
 };
 
 const useSearch = () => {
+  const history = useHistory();
   const currentSearch = localStorage.getItem('searchValue') ?? '';
+
   const [getUsers, { data, isFetching, isUninitialized }] =
     useLazyGetUsersQuery();
 
@@ -19,8 +22,7 @@ const useSearch = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FormValues> = async ({ search }, event) => {
-    event?.preventDefault();
+  const onSubmit: SubmitHandler<FormValues> = async ({ search }) => {
     localStorage.setItem('searchValue', search);
 
     await getUsers(search);
@@ -31,6 +33,13 @@ const useSearch = () => {
       handleSubmit(onSubmit)();
     }
   }, []);
+
+  useEffect(() => {
+    history.push({
+      pathname: '/',
+      search: currentSearch ? `?name=${currentSearch}` : '',
+    });
+  }, [currentSearch]);
 
   return {
     onSubmit: handleSubmit(onSubmit),
