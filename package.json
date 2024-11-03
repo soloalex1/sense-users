@@ -6,7 +6,8 @@
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch --coverage"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",

@@ -10,9 +10,9 @@ import useSearch from '../../hooks/useSearch';
 import * as S from './styles';
 
 export default function HomePage() {
-  const [view, setView] = useState<string>('list');
+  const [view, setView] = useState<string>('table');
 
-  const { data, control, onSubmit, isFetching } = useSearch();
+  const { data, control, onSubmit } = useSearch();
 
   return (
     <>
@@ -42,6 +42,7 @@ export default function HomePage() {
         </S.SearchForm>
 
         <S.ToggleGroup
+          name="view"
           value={view}
           onChange={setView}
           aria-label="Alterar visualização"
@@ -54,7 +55,7 @@ export default function HomePage() {
           </S.Toggle>
         </S.ToggleGroup>
 
-        {view === 'table' && <UsersTable users={data} isLoading={isFetching} />}
+        {view === 'table' && <UsersTable users={data} />}
         {view === 'list' && <UserList users={data} />}
       </S.MainContainer>
     </>
