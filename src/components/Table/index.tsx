@@ -1,11 +1,4 @@
-import {
-  Cell,
-  Column,
-  Row,
-  Table,
-  TableBody,
-  TableHeader,
-} from 'react-aria-components';
+import { Column, Row, TableBody } from 'react-aria-components';
 
 import Spinner from '../Spinner';
 
@@ -30,14 +23,14 @@ const UsersTable = ({ users, isLoading }: UsersTableProps) => {
         <Column isRowHeader>Telefone</Column>
         <Column isRowHeader>E-mail</Column>
       </S.TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <Row key={user.id}>
+      <TableBody items={users}>
+        {(user) => (
+          <Row id={user.id}>
             <S.TableCell>{user.name}</S.TableCell>
             <S.TableCell>{user.phone}</S.TableCell>
             <S.TableCell>{user.email}</S.TableCell>
           </Row>
-        ))}
+        )}
       </TableBody>
     </S.Table>
   );
