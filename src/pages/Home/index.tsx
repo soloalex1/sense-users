@@ -46,10 +46,10 @@ export default function HomePage() {
           onChange={setView}
           aria-label="Alterar visualização"
         >
-          <S.Toggle value="table">
+          <S.Toggle value="table" aria-label="Tabela">
             <TableCellsIcon title="Tabela" />
           </S.Toggle>
-          <S.Toggle value="list">
+          <S.Toggle value="list" aria-label="Lista">
             <QueueListIcon title="Lista" />
           </S.Toggle>
         </S.ToggleGroup>
