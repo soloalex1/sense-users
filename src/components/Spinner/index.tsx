@@ -1,50 +1,29 @@
-import { ProgressBar } from 'react-aria-components';
-
 const Spinner = () => {
-  let center = 16;
-  let strokeWidth = 4;
-  let r = 16 - strokeWidth;
-  let c = 2 * r * Math.PI;
-
   return (
-    <ProgressBar aria-label="Carregando…" isIndeterminate>
-      {({ percentage }) => (
-        <>
-          <svg
-            width={64}
-            height={64}
-            viewBox="0 0 32 32"
-            fill="none"
-            strokeWidth={strokeWidth}
-          >
-            <circle
-              cx={center}
-              cy={center}
-              r={r - (strokeWidth / 2 - 0.25)}
-              stroke="var(--border-color)"
-              strokeWidth={0.5}
-            />
-            <circle
-              cx={center}
-              cy={center}
-              r={r + (strokeWidth / 2 - 0.25)}
-              stroke="var(--border-color)"
-              strokeWidth={0.5}
-            />
-            <circle
-              cx={center}
-              cy={center}
-              r={r}
-              stroke="var(--highlight-background)"
-              strokeDasharray={`${c} ${c}`}
-              strokeDashoffset={c - (percentage! / 100) * c}
-              strokeLinecap="round"
-              transform="rotate(-90 16 16)"
-            />
-          </svg>
-        </>
-      )}
-    </ProgressBar>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="3rem"
+      height="3rem"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="black"
+        d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+        opacity={0.25}
+      ></path>
+      <path
+        fill="black"
+        d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+      >
+        <animateTransform
+          attributeName="transform"
+          dur="0.75s"
+          repeatCount="indefinite"
+          type="rotate"
+          values="0 12 12;360 12 12"
+        ></animateTransform>
+      </path>
+    </svg>
   );
 };
 
