@@ -8,11 +8,16 @@ import * as S from './styles';
 
 type UsersTableProps = {
   users: User[] | undefined;
+  isLoading: boolean;
 };
 
-const UsersTable = ({ users }: UsersTableProps) => {
-  if (!users) {
-    return <Spinner />;
+const UsersTable = ({ users, isLoading }: UsersTableProps) => {
+  if (isLoading) {
+    return (
+      <S.LoaderContainer>
+        <Spinner />
+      </S.LoaderContainer>
+    );
   }
 
   return (

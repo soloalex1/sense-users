@@ -31,3 +31,11 @@ export const TableCell = styled(Cell)`
   padding: 0.875rem 0.5rem;
   border: 2px solid black;
 `;
+
+export const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
