@@ -1,7 +1,7 @@
-import { render } from '../../testUtils';
 import { fireEvent, screen } from '@testing-library/dom';
 import fetchMock from 'jest-fetch-mock';
 
+import { render } from '../../test/utils';
 import { userMock } from '../../test/mockUsers';
 
 import HomePage from '.';
