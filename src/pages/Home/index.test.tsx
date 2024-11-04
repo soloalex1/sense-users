@@ -1,7 +1,6 @@
-import { fireEvent, screen } from '@testing-library/dom';
 import fetchMock from 'jest-fetch-mock';
 
-import { render } from '../../test/utils';
+import { act, render, screen, fireEvent } from '../../test/utils';
 import { userMock } from '../../test/mockUsers';
 
 import HomePage from '.';
@@ -11,8 +10,8 @@ describe('Home', () => {
     fetchMock.mockResponse(JSON.stringify(userMock));
   });
 
-  it('should render minimal info and controls', () => {
-    render(<HomePage />);
+  it('should render minimal info and controls', async () => {
+    await act(async () => render(<HomePage />));
 
     const header = screen.getByText(/lista de usuários/i);
     expect(header).toBeVisible();
@@ -27,7 +26,7 @@ describe('Home', () => {
   });
 
   it('should have search input fully operable', async () => {
-    render(<HomePage />);
+    await act(async () => render(<HomePage />));
 
     const search = screen.getByPlaceholderText(/pesquise usuários pelo nome/i);
 
@@ -42,7 +41,7 @@ describe('Home', () => {
   });
 
   it('should have search button fully operable', async () => {
-    render(<HomePage />);
+    await act(async () => render(<HomePage />));
 
     const searchButton = screen.getByText(/pesquisar/i);
 
@@ -54,7 +53,7 @@ describe('Home', () => {
   });
 
   it('should have view controls fully operable', async () => {
-    render(<HomePage />);
+    await act(async () => render(<HomePage />));
 
     const tableButton = screen.getByRole('radio', { name: 'Tabela' });
     expect(tableButton).toBeVisible();
