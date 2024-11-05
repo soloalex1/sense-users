@@ -30,10 +30,10 @@ describe('Home', () => {
 
     const search = screen.getByPlaceholderText(/pesquise usuários pelo nome/i);
 
-    search.focus();
+    await act(async () => search.focus());
     expect(search).toHaveFocus();
 
-    search.blur();
+    await act(async () => search.blur());
     expect(search).not.toHaveFocus();
 
     fireEvent.change(search, { target: { value: 'changed' } });
@@ -45,10 +45,10 @@ describe('Home', () => {
 
     const searchButton = screen.getByText(/pesquisar/i);
 
-    searchButton.focus();
+    await act(async () => searchButton.focus());
     expect(searchButton).toHaveFocus();
 
-    searchButton.blur();
+    await act(async () => searchButton.blur());
     expect(searchButton).not.toHaveFocus();
   });
 
