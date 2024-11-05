@@ -6,7 +6,7 @@ import UserList from '.';
 
 describe('UserList', () => {
   it('should render all users correctly', () => {
-    render(<UserList users={userMock} />);
+    render(<UserList users={userMock} isLoading={false} />);
 
     userMock.map((user) => {
       expect(screen.getByText(user.name)).toBeVisible();
@@ -16,9 +16,16 @@ describe('UserList', () => {
   });
 
   it('should not render anything without users', () => {
-    render(<UserList users={[]} />);
+    render(<UserList users={[]} isLoading={false} />);
 
     const userListContainer = screen.getByRole('grid');
     expect(userListContainer).toBeEmptyDOMElement();
+  });
+
+  it('should render the loading state when loading', () => {
+    render(<UserList users={[]} isLoading />);
+
+    const spinner = screen.getByRole('progressbar');
+    expect(spinner).toBeVisible();
   });
 });
