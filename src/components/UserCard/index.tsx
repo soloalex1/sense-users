@@ -10,7 +10,7 @@ type UserCardProps = {
 
 const UserCard = ({ user }: UserCardProps) => {
   return (
-    <S.CardContainer id={user.id}>
+    <S.CardContainer textValue={user.name} id={user.id}>
       <UserCircleIcon />
       <S.CardBody>
         <h2>{user.name}</h2>

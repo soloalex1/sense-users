@@ -8,16 +8,15 @@ import * as S from './styles';
 
 type UsersTableProps = {
   users: User[] | undefined;
-  isLoading: boolean;
 };
 
-const UsersTable = ({ users, isLoading }: UsersTableProps) => {
-  if (!users || isLoading) {
+const UsersTable = ({ users }: UsersTableProps) => {
+  if (!users) {
     return <Spinner />;
   }
 
   return (
-    <S.Table aria-label="Usuários">
+    <S.Table aria-label="Tabela de usuários">
       <S.TableHeader>
         <Column isRowHeader>Nome</Column>
         <Column isRowHeader>Telefone</Column>
