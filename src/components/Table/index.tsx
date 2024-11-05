@@ -13,11 +13,7 @@ type UsersTableProps = {
 
 const UsersTable = ({ users, isLoading }: UsersTableProps) => {
   if (isLoading) {
-    return (
-      <S.LoaderContainer>
-        <Spinner />
-      </S.LoaderContainer>
-    );
+    return <Spinner />;
   }
 
   return (
