@@ -12,7 +12,7 @@ import * as S from './styles';
 export default function HomePage() {
   const [view, setView] = useState<string>('table');
 
-  const { data, control, onSubmit } = useSearch();
+  const { data, control, onSubmit, isFetching } = useSearch();
 
   return (
     <>
@@ -55,8 +55,8 @@ export default function HomePage() {
           </S.Toggle>
         </S.ToggleGroup>
 
-        {view === 'table' && <UsersTable users={data} />}
-        {view === 'list' && <UserList users={data} />}
+        {view === 'table' && <UsersTable users={data} isLoading={isFetching} />}
+        {view === 'list' && <UserList users={data} isLoading={isFetching} />}
       </S.MainContainer>
     </>
   );
