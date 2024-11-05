@@ -22,10 +22,13 @@ describe('UserList', () => {
     expect(userListContainer).toBeEmptyDOMElement();
   });
 
-  it('should render the loading state when loading', () => {
+  it('should render only the loading state when loading', () => {
     render(<UserList users={[]} isLoading />);
 
     const spinner = screen.getByRole('progressbar');
     expect(spinner).toBeVisible();
+
+    const grid = screen.queryByRole('grid');
+    expect(grid).toBeNull();
   });
 });

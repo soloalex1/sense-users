@@ -10,6 +10,7 @@ exports[`UserCard should match the snapshot 1`] = `
         hidden=""
       />
       <div
+        aria-label="test grid list"
         class="react-aria-GridList"
         data-layout="stack"
         data-rac=""
@@ -74,6 +75,7 @@ exports[`UserCard should match the snapshot 1`] = `
       hidden=""
     />
     <div
+      aria-label="test grid list"
       class="react-aria-GridList"
       data-layout="stack"
       data-rac=""

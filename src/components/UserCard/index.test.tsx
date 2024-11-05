@@ -11,7 +11,7 @@ describe('UserCard', () => {
   let randomUser = {} as User;
 
   const renderWithWrapper = (Component: JSX.Element) => {
-    return render(<GridList>{Component}</GridList>);
+    return render(<GridList aria-label="test grid list">{Component}</GridList>);
   };
 
   beforeEach(() => {
