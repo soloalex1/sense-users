@@ -56,7 +56,7 @@ export default function HomePage() {
         </S.ToggleGroup>
 
         {view === 'table' && <UsersTable users={data} isLoading={isFetching} />}
-        {view === 'list' && <UserList users={data} />}
+        {view === 'list' && <UserList users={data} isLoading={isFetching} />}
       </S.MainContainer>
     </>
   );
